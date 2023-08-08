@@ -1,6 +1,6 @@
 from .models import Book
 from .serializers import BookSerializer
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -16,16 +16,19 @@ class BookDetailView(generics.RetrieveAPIView):
     serializer_class = BookSerializer
 
 
-class BookCreateView(LoginRequiredMixin, generics.ListCreateAPIView):
+class BookCreateView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class BookUpdateView(LoginRequiredMixin, generics.RetrieveUpdateAPIView):
+class BookUpdateView(generics.RetrieveUpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class BookDeleteView(LoginRequiredMixin, generics.RetrieveDestroyAPIView):
+class BookDeleteView(generics.RetrieveDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

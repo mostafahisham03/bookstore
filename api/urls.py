@@ -8,4 +8,5 @@ urlpatterns = [
     path("detail/<int:pk>", BookDetailView.as_view()),
     path("update/<int:pk>", BookUpdateView.as_view()),
     path("delete/<int:pk>", BookDeleteView.as_view()),
+    path("api-auth/", include("rest_framework.urls")),
 ]
