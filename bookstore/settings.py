@@ -119,6 +119,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://appname.herokuapp.com'
+]
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
