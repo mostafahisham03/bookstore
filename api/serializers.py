@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Book
+from .models import Book, Author, Genre, Publisher
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
@@ -15,15 +15,17 @@ class BookSerializer(serializers.ModelSerializer):
         instance.title = validated_data.get('title', instance.title)
         instance.author = validated_data.get('author', instance.author)
         instance.genre = validated_data.get('genre', instance.genre)
-        instance.pub = validated_data.get('pub', instance.pub)
-        instance.pub_date = validated_data.get('pub_date', instance.pub_date)
+        instance.publisher = validated_data.get('pub', instance.publisher)
+        instance.published_date = validated_data.get(
+            'pub_date', instance.published_date)
         instance.price = validated_data.get('price', instance.price)
         instance.save()
         return instance
 
     class Meta:
         model = Book
-        fields = ['id', 'title', 'price', 'author', 'genre', 'pub', 'pub_date']
+        fields = ['id', 'title', 'price', 'author',
+                  'genre', 'publisher', 'published_date']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -32,7 +34,34 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'password']
 
 
-# class RegisterSerializer(serializers.ModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        return Author.objects.create(**validated_data)
+
+    class Meta:
+        model = Author
+        fields = ['id', 'name', 'age']
+
+
+class GenreSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        return Genre.objects.create(**validated_data)
+
+    class Meta:
+        model = Genre
+        fields = ['id', 'name']
+
+
+class PublisherSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        return Publisher.objects.create(**validated_data)
+
+    class Meta:
+        model = Publisher
+        fields = ['id', 'name', 'address']
+
+#
+#    class RegisterSerializer(serializers.ModelSerializer):
 #     email = serializers.EmailField(
 #         required=True,
 #         validators=[UniqueValidator(queryset=User.objects.all())]

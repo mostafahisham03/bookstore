@@ -1,5 +1,5 @@
-from .models import Book
-from .serializers import BookSerializer
+from .models import Book, Author, Genre, Publisher
+from .serializers import BookSerializer, AuthorSerializer, GenreSerializer, PublisherSerializer
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework import status
@@ -38,4 +38,88 @@ class BookUpdateView(generics.RetrieveUpdateAPIView):
 class BookDeleteView(generics.RetrieveDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class AuthorList(generics.ListAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class AuthorDetailsView(generics.RetrieveAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class AuthorCreateView(generics.ListCreateAPIView):
+    queryset = AuthorSerializer.objects.all()
+    serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class AuthorUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class AuthorDeleteView(generics.RetrieveDestroyAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GenreList(generics.ListAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+
+
+class GenreDetailsView(generics.RetrieveAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class GenreCreateView(generics.ListCreateAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GenreUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GenreDeleteView(generics.RetrieveDestroyAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class PublisherList(generics.ListAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
+
+
+class PublisherDetailsView(generics.RetrieveAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
+
+
+class PublisherCreateView(generics.ListCreateAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class PublisherUpdateView(generics.RetrieveUpdateAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class PublisherDeleteView(generics.RetrieveDestroyAPIView):
+    queryset = Publisher.objects.all()
+    serializer_class = PublisherSerializer
     permission_classes = [permissions.IsAuthenticated]
