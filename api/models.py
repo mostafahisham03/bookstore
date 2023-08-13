@@ -8,7 +8,7 @@ class Author(models.Model):
     age = models.IntegerField()
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name}'
@@ -18,7 +18,7 @@ class Genre(models.Model):
     name = models.CharField(max_length=20)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name}'
@@ -29,7 +29,7 @@ class Publisher(models.Model):
     address = models.CharField(max_length=100)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['id']
 
     def __str__(self):
         return f'{self.name}'
@@ -42,7 +42,7 @@ class Book(models.Model):
     genre = models.ForeignKey(
         Genre, on_delete=models.CASCADE, related_name='books')
     publisher = models.ForeignKey(
-        Publisher, models.CASCADE,  related_name='books')
+        Publisher, on_delete=models.CASCADE,  related_name='books')
     published_date = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 

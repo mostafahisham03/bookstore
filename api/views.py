@@ -52,7 +52,7 @@ class AuthorDetailsView(generics.RetrieveAPIView):
 
 
 class AuthorCreateView(generics.ListCreateAPIView):
-    queryset = AuthorSerializer.objects.all()
+    queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [permissions.IsAuthenticated]
 

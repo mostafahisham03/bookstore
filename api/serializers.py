@@ -42,7 +42,6 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = ['id', 'name', 'age']
 
-
 class GenreSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Genre.objects.create(**validated_data)
