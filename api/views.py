@@ -17,6 +17,26 @@ class BooksList(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Book.objects.all()
+        title = self.request.query_params.get('title')
+        if title is not None:
+            queryset = queryset.filter(title=title)
+        author = self.request.query_params.get('author')
+        if author is not None:
+            queryset = queryset.filter(author=author)
+        publisher = self.request.query_params.get('publisher')
+        if publisher is not None:
+            queryset = queryset.filter(publisher=publisher)
+        genre = self.request.query_params.get('genre')
+        if genre is not None:
+            queryset = queryset.filter(genre=genre)
+        return queryset
+
 
 class BookDetailsView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
