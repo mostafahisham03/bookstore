@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import reverse
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from .views import BooksList, BookCreateView, BookDetailsView, BookUpdateView, BookDeleteView, AuthorList,  AuthorCreateView, AuthorDetailsView, AuthorUpdateView, AuthorDeleteView, GenreList, GenreCreateView, GenreDetailsView, GenreUpdateView, GenreDeleteView, PublisherList, PublisherCreateView, PublisherDetailsView, PublisherUpdateView, PublisherDeleteView
 
 urlpatterns = [
@@ -28,4 +30,10 @@ urlpatterns = [
     path("publisher/delete/<int:pk>", PublisherDeleteView.as_view()),
 
     path("api-auth/", include("rest_framework.urls")),
+
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('schema/swagger-ui/',
+         SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
