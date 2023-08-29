@@ -38,9 +38,10 @@ class BooksList(generics.ListAPIView):
         return queryset
 
 
-class BookDetailsView(generics.RetrieveAPIView):
+class BookDetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class BookCreateView(generics.ListCreateAPIView):
@@ -49,16 +50,16 @@ class BookCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class BookUpdateView(generics.RetrieveUpdateAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class BookUpdateView(generics.RetrieveUpdateAPIView):
+#     queryset = Book.objects.all()
+#     serializer_class = BookSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
-class BookDeleteView(generics.RetrieveDestroyAPIView):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class BookDeleteView(generics.RetrieveDestroyAPIView):
+#     queryset = Book.objects.all()
+#     serializer_class = BookSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
 class AuthorList(generics.ListAPIView):
@@ -66,9 +67,10 @@ class AuthorList(generics.ListAPIView):
     serializer_class = AuthorSerializer
 
 
-class AuthorDetailsView(generics.RetrieveAPIView):
+class AuthorDetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class AuthorCreateView(generics.ListCreateAPIView):
@@ -77,16 +79,16 @@ class AuthorCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class AuthorUpdateView(generics.RetrieveUpdateAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class AuthorUpdateView(generics.RetrieveUpdateAPIView):
+#     queryset = Author.objects.all()
+#     serializer_class = AuthorSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
-class AuthorDeleteView(generics.RetrieveDestroyAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class AuthorDeleteView(generics.RetrieveDestroyAPIView):
+#     queryset = Author.objects.all()
+#     serializer_class = AuthorSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
 class GenreList(generics.ListAPIView):
@@ -94,9 +96,10 @@ class GenreList(generics.ListAPIView):
     serializer_class = GenreSerializer
 
 
-class GenreDetailsView(generics.RetrieveAPIView):
+class GenreDetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Genre.objects.all()
     serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class GenreCreateView(generics.ListCreateAPIView):
@@ -105,16 +108,16 @@ class GenreCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class GenreUpdateView(generics.RetrieveUpdateAPIView):
-    queryset = Genre.objects.all()
-    serializer_class = GenreSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class GenreUpdateView(generics.RetrieveUpdateAPIView):
+#     queryset = Genre.objects.all()
+#     serializer_class = GenreSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
-class GenreDeleteView(generics.RetrieveDestroyAPIView):
-    queryset = Genre.objects.all()
-    serializer_class = GenreSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class GenreDeleteView(generics.RetrieveDestroyAPIView):
+#     queryset = Genre.objects.all()
+#     serializer_class = GenreSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
 class PublisherList(generics.ListAPIView):
@@ -122,9 +125,10 @@ class PublisherList(generics.ListAPIView):
     serializer_class = PublisherSerializer
 
 
-class PublisherDetailsView(generics.RetrieveAPIView):
+class PublisherDetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Publisher.objects.all()
     serializer_class = PublisherSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class PublisherCreateView(generics.ListCreateAPIView):
@@ -133,13 +137,13 @@ class PublisherCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class PublisherUpdateView(generics.RetrieveUpdateAPIView):
-    queryset = Publisher.objects.all()
-    serializer_class = PublisherSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class PublisherUpdateView(generics.RetrieveUpdateAPIView):
+#     queryset = Publisher.objects.all()
+#     serializer_class = PublisherSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 
 
-class PublisherDeleteView(generics.RetrieveDestroyAPIView):
-    queryset = Publisher.objects.all()
-    serializer_class = PublisherSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class PublisherDeleteView(generics.RetrieveDestroyAPIView):
+#     queryset = Publisher.objects.all()
+#     serializer_class = PublisherSerializer
+#     permission_classes = [permissions.IsAuthenticated]

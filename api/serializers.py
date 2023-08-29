@@ -6,10 +6,6 @@ from django.contrib.auth.password_validation import validate_password
 
 
 class BookSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        book = Book.objects.create(**validated_data)
-        book.save()
-        return book
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
@@ -35,16 +31,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        return Author.objects.create(**validated_data)
 
     class Meta:
         model = Author
         fields = ['id', 'name', 'age']
 
+
 class GenreSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        return Genre.objects.create(**validated_data)
 
     class Meta:
         model = Genre
@@ -52,8 +45,6 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class PublisherSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        return Publisher.objects.create(**validated_data)
 
     class Meta:
         model = Publisher
